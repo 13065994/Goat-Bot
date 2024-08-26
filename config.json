@@ -2,9 +2,11 @@
 	"email": "",
 	"password": "",
 	"adminOnly": false,
-	"adminBot": [],
-	"nickNameBot": "",
-	"prefix": "#",
+	"adminBot": [
+		"61560951290111"
+	],
+	"nickNameBot": "Goat-Bot/mirai gv2",
+	"prefix": "!",
 	"database": {
 		"type": "local",
 		"uriMongodb": "",
