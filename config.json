@@ -3,9 +3,9 @@
 	"password": "",
 	"adminOnly": false,
 	"adminBot": [
-		"61560951290111"
+		"100017555747989"
 	],
-	"nickNameBot": "Goat-Bot/mirai gv2",
+	"nickNameBot": "MirAI project",
 	"prefix": "!",
 	"database": {
 		"type": "local",
