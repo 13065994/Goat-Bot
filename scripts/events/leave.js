@@ -7,7 +7,7 @@ module.exports = {
 		version: "1.0.1",
 		type: ["log:unsubscribe"],
 		author: {
-			name: "NTKhang",
+			name: "gerald",
 			contacts: ""
 		},
 	},
