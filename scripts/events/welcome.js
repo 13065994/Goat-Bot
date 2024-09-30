@@ -4,10 +4,10 @@ const moment = require("moment-timezone");
 module.exports = {
 	config: {
 		name: "welcome",
-		version: "1.0.3",
+		version: "1.0",
 		type: ["log:subscribe"],
 		author: {
-			name: "NTKhang",
+			name: "gerald",
 			contacts: ""
 		},
 	},
@@ -19,7 +19,7 @@ module.exports = {
 		// Nếu là bot;
 		if (dataAddedParticipants.some(item => item.userFbId == globalGoat.botID)) {
 			if (nickNameBot) api.changeNickname(nickNameBot, threadID, globalGoat.botID);
-			return message.send(`Thank you for inviting me!\nPrefix bot: ${globalGoat.config.prefix}\nĐể xem danh sách lệnh hãy nhập: ${prefix}help`);
+			return message.send(`Thank you for inviting me!\nPrefix bot: ${globalGoat.config.prefix}\nto see some of my commands type: ${prefix}help`);
 		}
 
 		// Nếu là thành viên mới:
@@ -41,7 +41,7 @@ module.exports = {
 		// {boxName}:  tên của nhóm chat
 		// {multiple}: bạn || các bạn
 		// {session}:  buổi trong ngày
-		const messageWelcomeDefault = `Xin chào {userName}.\nChào mừng {multiple} đã đến với nhóm chat: {boxName}\nChúc {multiple} có một buổi {session} vui vẻ =)`;
+		const messageWelcomeDefault = `hello {userName}.\n{multiple} are welcome to this group named: {boxName}\n{multiple} should have a nice {session}`;
 		let messageWelcome = threadData.welcomeMessage || messageWelcomeDefault;
 		messageWelcome = messageWelcome
 			.replace(/\{userName}/g, userName.join(", "))
