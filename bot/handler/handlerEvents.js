@@ -12,7 +12,7 @@ module.exports = function ({ api, globalGoat, client, usersData, threadsData, do
 		let prefix = globalGoat.config.prefix;
 		client.allThreadData[threadID] ? prefix = client.allThreadData[threadID].prefix || prefix : "";
 
-		const contentSyntaxError = `Lệnh bạn đang sử dụng sai cú pháp, vui lòng gõ ${prefix}help {nameCmd} để xem chi tiết cách sử dụng lệnh này`;
+		const contentSyntaxError = `the command you are using, is wrong syntax, type ${prefix}help {nameCmd} to see how to use this cmd.`;
 
 		const parameters = { api, globalGoat, client, usersData, threadsData, message, event, download };
 
@@ -67,21 +67,21 @@ module.exports = function ({ api, globalGoat, client, usersData, threadsData, do
 			const infoBannedUser = client.allUserData[senderID].banned;
 			if (infoBannedUser.status == true) {
 				return message.reply(
-					`Bạn đã bị Admin cấm sử dụng bot`
-					+ `\n> Lý do: ${infoBannedUser.reason}`
-					+ `\n> Thời gian: ${infoBannedUser.date}`
+					`banned`
+					+ `\n> reason: ${infoBannedUser.reason}`
+					+ `\n> date: ${infoBannedUser.date}`
 					+ `\n> User ID: ${senderID}`);
 			}
 			// +++++++++++    Check Thread    +++++++++++ //
 			if (isGroup == true) {
 				const infoBannedThread = threadInfo.banned;
 				if (infoBannedThread.status == true) return message.reply(
-					`Nhóm của bạn đã bị Admin bot cấm dùng bot`
-					+ `\n> Lý do: ${infoBannedThread.reason}`
-					+ `\n> Thời gian: ${infoBannedThread.date}`
+					`banned`
+					+ `\n> reason: ${infoBannedThread.reason}`
+					+ `\n> date: ${infoBannedThread.date}`
 					+ `\n> Thread ID: ${threadID}`);
 			}
-			if (!command) return message.reply(`Lệnh ${commandName ? `'${commandName}'` : 'bạn sử dụng'} không tồn tại, gõ ${prefix}help để xem tất cả lệnh hiện có`);
+			if (!command) return message.reply(`𝐓𝐇𝐄 𝐂𝐎𝐌𝐌𝐀𝐍𝐃 ` ${commandName ? `'${commandName}'`} 𝐃𝐎𝐄𝐒 𝐍𝐎𝐓 𝐄𝐗𝐈𝐒𝐓 𝐈𝐍 𝐀𝐔𝐓𝐎 𝐒𝐘𝐒𝐓𝐄𝐌`);
 			//============================================//
 			// ————————————— COMMAND BANNED ————————————— //
 			if (client.commandBanned[commandName]) return message.reply(`Lệnh ${commandName} đã bị Admin cấm sử dụng trong hệ thống bot với lý do: ${client.commandBanned[commandName]}`);
@@ -93,8 +93,8 @@ module.exports = function ({ api, globalGoat, client, usersData, threadsData, do
 				adminBox.includes(senderID) ? 1 :
 					0;
 
-			if (needRole > role && needRole == 1) return message.reply(`Chỉ quản trị viên của nhóm chat mới có thể dùng lệnh '${commandName}'`);
-			if (needRole > role && needRole == 2) return message.reply(`Chỉ admin bot mới có thể dùng lệnh '${commandName}'`);
+			if (needRole > role && needRole == 1) return message.reply(`oops only group admin can use dis '${commandName}'`);
+			if (needRole > role && needRole == 2) return message.reply(`only admin bot can use this command '${commandName}'`);
 			// ———————————————— COOLDOWNS ———————————————— //
 			if (!client.cooldowns[commandName]) client.cooldowns[commandName] = {};
 			const timestamps = client.cooldowns[commandName];
@@ -139,7 +139,7 @@ module.exports = function ({ api, globalGoat, client, usersData, threadsData, do
 					}
 					message.reply(formSendMessage);
 				};
-				const time = moment.tz("Asia/Ho_Chi_Minh").format("DD/MM/YYYY HH:mm:ss");
+				const time = moment.tz("Africa/Lagos").format("DD/MM/YYYY HH:mm:ss");
 				print(`${chalk.hex("#ffb300")(time)} | ${commandName} | ${senderID} | ${threadID} | ${args.join(" ")}`, "CALL CMD");
 				parameters.role = role;
 				command.start({ ...parameters, ...{ args } });
@@ -187,7 +187,7 @@ module.exports = function ({ api, globalGoat, client, usersData, threadsData, do
 			}
 			catch (err) {
 				print.err(`Đã xảy ra lỗi khi thực thi lệnh reply ở lệnh ${Reply.nameCmd} ${err.stack}`, "WHEN REPLY");
-				message.reply(`❎\nĐã xảy ra lỗi tại command  ${Reply.nameCmd}\n${err.stack}`);
+				message.reply(` ${Reply.nameCmd}\n${err.stack}`);
 			}
 		}
 
@@ -227,7 +227,7 @@ module.exports = function ({ api, globalGoat, client, usersData, threadsData, do
 			}
 			catch (e) {
 				print.err(`Đã xảy ra lỗi khi thực thi command Reaction tại lệnh ${Reaction.nameCmd}: ${e.stack}`, "HANDLE REACTION");
-				message.reply(`❎\nĐã xảy ra lỗi tại command Reaction ${Reaction.nameCmd}\n${e.stack}`);
+				message.reply(`${Reaction.nameCmd}\n${e.stack}`);
 			}
 		}
 
@@ -247,7 +247,7 @@ module.exports = function ({ api, globalGoat, client, usersData, threadsData, do
 				}
 				catch (err) {
 					print.err(`Đã xảy ra lỗi tại command event ${chalk.hex("#ff0000")(getEvent.config.name)}, ${err.stack}`, "EVENT COMMAND");
-					message.reply(`❎\nĐã xảy ra lỗi tại command event ${getEvent.config.name}\n${err.stack}`)
+					message.reply(`${getEvent.config.name}\n${err.stack}`)
 				}
 			}
 		}
