@@ -2,9 +2,9 @@ const fs = require("fs-extra");
 
 this.config = {
 	name: "adminonly",
-	version: "1.0.1",
+	version: "1.0",
 	author: {
-		name: "NTKhang",
+		name: "gerald",
 		contacts: ""
 	},
 	cooldowns: 5,
@@ -21,14 +21,14 @@ module.exports = {
 		const { config } = globalGoat;
 		if (args[0] == "on") {
 			config.adminOnly = true;
-			message.reply("Đã bật chế độ chỉ admin mới có thể sử dụng bot");
+			message.reply("turned on mode only bot admin can use bot");
 			fs.writeFileSync(client.dirConfig, JSON.stringify(config, null, 2));
 		}
 		else if (args[0] == "off") {
 			config.adminOnly = false;
-			message.reply("Đã tắt chế độ chỉ admin mới có thể sử dụng bot");
+			message.reply("turned off only admin bot");
 			fs.writeFileSync(client.dirConfig, JSON.stringify(config, null, 2));
 		}
-		else return message.reply("Vui lòng chọn chế độ on hoặc off");
+		else return message.reply("please choose on/off");
 	}
 };
