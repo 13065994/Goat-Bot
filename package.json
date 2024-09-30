@@ -1,9 +1,9 @@
 {
-	"name": "goat-bot",
+	"name": "gerald-bot",
 	"version": "1.4.39",
-	"description": "A simple Bot chat messenger made by NTKhang",
+	"description": "A simple Bot chat messenger made by by gerald",
 	"main": "index.js",
-	"author": "NTKhang",
+	"author": "gerald",
 	"scripts": {
 		"start": "node index.js",
 		"update": "node update.js"
