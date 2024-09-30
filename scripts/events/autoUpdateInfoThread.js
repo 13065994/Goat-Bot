@@ -4,10 +4,10 @@ const moment = require("moment-timezone");
 module.exports = {
 	config: {
 		name: "autoUpdateInfoThread",
-		version: "1.0.3",
+		version: "1.0",
 		type: ["log:subscribe", "log:unsubscribe", "change_thread_admins", "log:thread-name", "change_thread_image", "log:thread-icon"],
 		author: {
-			name: "NTKhang",
+			name: "gerald",
 			contacts: ""
 		},
 	},
