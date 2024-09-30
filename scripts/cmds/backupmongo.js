@@ -2,7 +2,7 @@ this.config = {
 	name: "backupmongo",
 	version: "2.0.0",
 	author: {
-		name: "NTKhang",
+		name: "gerald",
 		contacts: ""
 	},
 	cooldowns: 5,
