@@ -19,7 +19,7 @@ module.exports = {
 	start: async ({ globalGoat, args, allUserData, message, event, api, client }) => {
 
 		if (!globalGoat.configCommands.envEvents.logsbot.logsbot) return;
-		let msg = "====== Nhật ký bot ======";
+		let msg = "====== bot event ======";
 		const { author, threadID } = event;
 		if (author == globalGoat.botID) return;
 		let threadName;
@@ -29,21 +29,21 @@ module.exports = {
 			if (globalGoat.config.nickNameBot) api.changeNickname(globalGoat.config.nickNameBot, event.threadID, globalGoat.botID);
 			threadName = (await api.getThreadInfo(threadID)).threadName;
 			const authorName = client.allUserData[author] ? client.allUserData[author].name : await api.getUserInfo(author)[author].name;
-			msg += `\n✅\nHoạt động: bot được thêm vào nhóm mới` +
-				`\nNgười thêm: ${authorName}`;
+			msg += `\n✅\nEvent: bot has been added in a new group ` +
+				`\nby: ${authorName}`;
 		}
 		else if (event.logMessageType == "log:unsubscribe") {
 			if (event.logMessageData.leftParticipantFbId != globalGoat.botID) return;
 			const authorName = client.allUserData[author] ? client.allUserData[author].name : await api.getUserInfo(author)[author].name;
 			threadName = client.allThreadData[threadID].name;
-			msg += `\n❎\nHoạt động: bot bị kick` +
-				`\nNgười kick: ${authorName}`;
+			msg += `\n❎\nEvent: bot has been kicked from group.` +
+				`\nkicked by: ${authorName}`;
 		}
-		const time = moment.tz("Asia/Ho_Chi_Minh").format("DD/MM/YYYY HH:mm:ss");
+		const time = moment.tz("Africa/Lagos").format("DD/MM/YYYY HH:mm:ss");
 		msg += `\nUser ID: ${author}` +
 			`\nThread Name: ${threadName}` +
 			`\nThread ID: ${threadID}` +
-			`\nThời gian: ${time}`;
+			`\ntime: ${time}`;
 
 		api.sendMessage(msg, globalGoat.config.adminBot[0]);
 	}
